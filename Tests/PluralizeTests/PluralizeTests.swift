@@ -1,5 +1,5 @@
 import XCTest
-@testable import InflectorKit
+@testable import Pluralize
 
 final class InflectorKitTests: XCTestCase {
     func testSingularization() {
@@ -23,11 +23,11 @@ final class InflectorKitTests: XCTestCase {
     }
 
     func testStringInflector() {
-        let inflector = StringInflector.default
-        inflector.addSingularRule(#"^(MacBook)s (Pro|Air)?$"#, replacement: #"$1 $2"#)
-        inflector.addPluralRule(#"^i(Pod|Pad)( Mini)?$"#, replacement: #"i$1s$2"#)
+        let inflector = Inflector.default
+        inflector.addSingular(pattern: #"^(MacBook)s (Pro|Air)?$"#, replacement: #"$1 $2"#)
+        inflector.addPlural(pattern: #"^i(Pod|Pad)( Mini)?$"#, replacement: #"i$1s$2"#)
         inflector.addIrregular(singular: "lol", plural: "lolz")
-        inflector.addUncountable("Herokai")
+        inflector.addUncountable(word: "Herokai")
 
         XCTAssertEqual("MacBooks Air".singularized, "MacBook Air")
         XCTAssertEqual("iPad Mini".pluralized, "iPads Mini")

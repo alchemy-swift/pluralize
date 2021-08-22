@@ -1,25 +1,18 @@
 // swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
-    name: "InflectorKit",
+    name: "pluralize",
     products: [
-        .library(
-          name: "InflectorKit",
-          targets: ["InflectorKit"]
-        )
+        .library(name: "Pluralize", targets: ["Pluralize"])
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "InflectorKit"
-        ),
+        .target(name: "Pluralize"),
         .testTarget(
-            name: "InflectorKitTests",
+            name: "PluralizeTests",
             dependencies: [
-                .target(name: "InflectorKit")
+                .target(name: "Pluralize")
             ]
         )
     ]

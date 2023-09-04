@@ -1,10 +1,7 @@
-# InflectorKit
-![CI][ci badge]
+# Pluralize
 
-InflectorKit is a port of the string inflection functionality from
-[Rails ActiveSupport](https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflector/inflections.rb) for Swift and Objective-C.
-
-> InflectorKit joins [FormatterKit](https://github.com/mattt/FormatterKit) & [TransformerKit](https://github.com/mattt/TransformerKit) in providing well-designed APIs for manipulating user-facing content.
+Pluralize is a Swift only port of the string inflection functionality from
+[InflectorKit](https://github.com/mattt/InflectorKit).
 
 ## Usage
 
@@ -44,49 +41,11 @@ Herokai → Herokai
 */
 ```
 
-### Objective-C
-
-```objective-c
-#import "NSString+InflectorKit.h"
-
-for (NSString *singular in @[@"person", @"tomato", @"matrix", @"octopus", @"fish"]) {
-  NSLog(@"%@ → %@", singular, [singular pluralizedString]);
-}
-
-/*
-Prints:
-person → people
-tomato → tomatoes
-matrix → matrices
-octopus → octopi
-fish → fish
-*/
-
-// You can also add pluralization rules,
-// including irregular and uncountable words:
-
-TTTStringInflector *inflector = [TTTStringInflector defaultInflector];
-[inflector addPluralRule:@"^i(Pod|Pad)( Mini)?$" withReplacement:@"i$1s$2"];
-[inflector addIrregularWithSingular:@"lol" plural:@"lolz"];
-[inflector addUncountable:@"Herokai"];
-
-for (NSString *singular in @[@"iPad Mini", @"lol", @"Herokai"]) {
-  NSLog(@"%@ → %@", singular, [singular pluralizedString]);
-}
-
-/*
-Prints:
-iPad Mini → iPads Mini
-lol → lolz
-Herokai → Herokai
-*/
-```
-
 ## Installation
 
 ### Swift Package Manager
 
-Add the InflectorKit package to your target dependencies in `Package.swift`:
+Add the Pluralize package to your target dependencies in `Package.swift`:
 
 ```swift
 import PackageDescription
@@ -95,7 +54,7 @@ let package = Package(
   name: "YourProject",
   dependencies: [
     .package(
-        url: "https://github.com/mattt/InflectorKit",
+        url: "https://github.com/alchemy-swift/pluralize",
         from: "1.0.0"
     ),
   ]
@@ -104,24 +63,6 @@ let package = Package(
 
 Then run the `swift build` command to build your project.
 
-### CocoaPods
-
-You can install `InflectorKit` via CocoaPods,
-by adding the following line to your `Podfile`:
-
-```ruby
-pod 'InflectorKit', '~> 1.0.0'
-```
-
-Run the `pod install` command to download the library
-and integrate it into your Xcode project.
-
 ## License
 
 MIT
-
-## Contact
-
-Mattt ([@mattt](https://twitter.com/mattt))
-
-[ci badge]: https://github.com/mattt/InflectorKit/workflows/CI/badge.svg
